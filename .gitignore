@@ -1,5 +1,10 @@
+ines (13 sloc)  348 Bytes
 .gradle
-/build/
+build/
+out/
+.idea/workspace.xml
+.idea/misc.xml
+
 
 # Ignore Gradle GUI config
 gradle-app.setting
