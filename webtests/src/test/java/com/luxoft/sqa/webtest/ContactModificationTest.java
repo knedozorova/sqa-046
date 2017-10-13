@@ -1,6 +1,6 @@
 package com.luxoft.sqa.webtest;
 
-import model.ContactData;
+import com.luxoft.sqa.model.ContactData;
 import org.testng.annotations.Test;
 
 public class ContactModificationTest extends TestBase {

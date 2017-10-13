@@ -1,4 +1,4 @@
-package framework;
+package com.luxoft.sqa.framework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,5 +14,9 @@ public class SessionHelper extends BaseHelper {
         type(By.name("user"), userName);
         type(By.name("pass"), password);
         click(By.cssSelector("input[type=submit]"));
+    }
+
+    public void logout(){
+        driver.findElement(By.linkText("Logout"));
     }
 }

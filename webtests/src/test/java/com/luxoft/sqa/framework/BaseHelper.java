@@ -1,4 +1,4 @@
-package framework;
+package com.luxoft.sqa.framework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

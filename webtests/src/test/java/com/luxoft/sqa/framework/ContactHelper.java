@@ -1,6 +1,6 @@
-package framework;
+package com.luxoft.sqa.framework;
 
-import model.ContactData;
+import com.luxoft.sqa.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -10,8 +10,6 @@ public class ContactHelper extends BaseHelper {
 
         super(driver);
     }
-
-
 
     public void submitContactCreation() {
         click(By.cssSelector("input[type=submit]"));

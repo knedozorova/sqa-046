@@ -1,4 +1,4 @@
-package model;
+package com.luxoft.sqa.model;
 
 public class ContactData {
     String firstname;
