@@ -1,4 +1,4 @@
-package com.luxoft.sqa.webtests;
+package com.luxoft.sqa.webtest;
 
 import org.testng.annotations.Test;
 

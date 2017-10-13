@@ -3,18 +3,18 @@ package framework;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class NavigationHelper {
+public class NavigationHelper extends BaseHelper {
     private WebDriver driver;
 
     public NavigationHelper(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
 
     public void goToAddNew() {
-        driver.findElement(By.linkText("add new")).click();
+        click(By.linkText("add new"));
     }
     public void goToHome() {
-        driver.findElement(By.linkText("home")).click();
+        click(By.linkText("home"));
     }
 }

@@ -4,11 +4,11 @@ import model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ContactHelper {
-    private WebDriver driver;
+public class ContactHelper extends BaseHelper {
 
     public ContactHelper(WebDriver driver) {
-        this.driver = driver;
+
+        super(driver);
     }
 
 
@@ -24,16 +24,6 @@ public class ContactHelper {
         type(By.name("company"), contactData.getCompany());
         type(By.name("mobile"), contactData.getMobile());
         type(By.name("email"), contactData.getEmail());
-    }
-
-    private void type(By locator, String text) {
-        click(locator);
-        driver.findElement(locator).clear();
-        driver.findElement(locator).sendKeys(text);
-    }
-
-    private void click(By locator) {
-        driver.findElement(locator).click();
     }
 
     public void submitContactDeletion() {

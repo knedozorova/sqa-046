@@ -1,4 +1,4 @@
-package com.luxoft.sqa.webtests;
+package com.luxoft.sqa.webtest;
 
 import framework.Application;
 import org.testng.annotations.AfterMethod;
