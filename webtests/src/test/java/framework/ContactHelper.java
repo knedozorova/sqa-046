@@ -14,38 +14,43 @@ public class ContactHelper {
 
 
     public void submitContactCreation() {
-        driver.findElement(By.cssSelector("input[type=submit]")).click();
+        click(By.cssSelector("input[type=submit]"));
     }
 
     public void fillNewContact(ContactData contactData) {
 
-        driver.findElement(By.name("firstname")).clear();
-        driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
-        driver.findElement(By.name("lastname")).clear();
-        driver.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-        driver.findElement(By.name("company")).clear();
-        driver.findElement(By.name("company")).sendKeys(contactData.getCompany());
-        driver.findElement(By.name("mobile")).clear();
-        driver.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
-        driver.findElement(By.name("email")).clear();
-        driver.findElement(By.name("email")).sendKeys(contactData.getEmail());
+        type(By.name("firstname"), contactData.getFirstname());
+        type(By.name("lastname"), contactData.getLastname());
+        type(By.name("company"), contactData.getCompany());
+        type(By.name("mobile"), contactData.getMobile());
+        type(By.name("email"), contactData.getEmail());
+    }
+
+    private void type(By locator, String text) {
+        click(locator);
+        driver.findElement(locator).clear();
+        driver.findElement(locator).sendKeys(text);
+    }
+
+    private void click(By locator) {
+        driver.findElement(locator).click();
     }
 
     public void submitContactDeletion() {
 
-        driver.findElement(By.cssSelector("input[value=Delete]")).click();
+        click(By.cssSelector("input[value=Delete]"));
         driver.switchTo().alert().accept();
     }
 
     public void selectFirstContact() {
-        driver.findElement(By.name("selected[]")).click();
+        click(By.name("selected[]"));
     }
 
     public void submitContactModification() {
-        driver.findElement(By.name("update")).click();
+        click(By.name("update"));
     }
 
     public void initFirstContactModification() {
-        driver.findElement(By.cssSelector("img[title=Edit]")).click();
+        click(By.cssSelector("img[title=Edit]"));
     }
 }
