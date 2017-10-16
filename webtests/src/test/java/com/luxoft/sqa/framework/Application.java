@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class Application {
@@ -23,11 +24,11 @@ public class Application {
 
     public void init() {
         //System.setProperty("webdriver.chrome.driver", "lib/drivers/chromedriver.exe");
-            if (browser == BrowserType.CHROME){
+            if (browser.equals(BrowserType.CHROME)){
                 driver = new ChromeDriver();}
-            else if (browser == BrowserType.IE){
+            else if (browser.equals(BrowserType.IE)){
                 driver = new InternetExplorerDriver();}
-            else if (browser == BrowserType.FIREFOX){
+            else if (browser.equals(BrowserType.FIREFOX)){
                 driver = new FirefoxDriver();}
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         groupHelper = new GroupHelper(driver);
