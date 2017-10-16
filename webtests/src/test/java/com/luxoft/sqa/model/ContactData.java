@@ -6,13 +6,15 @@ public class ContactData {
     String company;
     String mobile;
     String email;
+    boolean creation;
 
-    public ContactData(String firstname, String lastname, String company, String mobile, String email) {
+    public ContactData(String firstname, String lastname, String company, String mobile, String email, boolean creation) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.company = company;
         this.mobile = mobile;
         this.email = email;
+        this.creation = creation;
     }
 
     public String getLastname() {
@@ -33,6 +35,10 @@ public class ContactData {
 
     public String getFirstname() {
         return firstname;
+    }
+
+    public boolean getCreation() {
+        return creation;
     }
 
 
