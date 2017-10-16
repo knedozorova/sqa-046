@@ -2,6 +2,9 @@ package com.luxoft.sqa.framework;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.BrowserType;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,11 +14,21 @@ public class Application {
     ContactHelper contactHelper;
     GroupHelper groupHelper;
     NavigationHelper navigationHelper;
+    String browser;
+
+    public Application(String browser) {
+        this.browser = browser;
+    }
 
 
     public void init() {
-        System.setProperty("webdriver.chrome.driver", "lib/drivers/chromedriver.exe");
-        driver = new ChromeDriver();
+        //System.setProperty("webdriver.chrome.driver", "lib/drivers/chromedriver.exe");
+            if (browser == BrowserType.CHROME){
+                driver = new ChromeDriver();}
+            else if (browser == BrowserType.IE){
+                driver = new InternetExplorerDriver();}
+            else if (browser == BrowserType.FIREFOX){
+                driver = new FirefoxDriver();}
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         groupHelper = new GroupHelper(driver);
         contactHelper = new ContactHelper(driver);
