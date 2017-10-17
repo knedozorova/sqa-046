@@ -5,8 +5,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class NavigationHelper extends BaseHelper {
-    private WebDriver driver;
-
     public NavigationHelper(WebDriver driver) {
         super(driver);
     }
