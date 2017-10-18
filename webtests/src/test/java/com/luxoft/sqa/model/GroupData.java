@@ -1,23 +1,17 @@
 package com.luxoft.sqa.model;
 
 public class GroupData {
-    String name;
-    String header;
-    String footer;
-    String id;
+    private String name;
+    private String header;
+    private String footer;
+    private int id;
 
-    public GroupData(String name, String header, String footer) {
-        this.name = name;
-        this.header = header;
-        this.footer = footer;
-        this.id = null;
-    }
-
-    public GroupData(String id, String name, String header, String footer) {
-        this.name = name;
-        this.header = header;
-        this.footer = footer;
-        this.id = id;
+    @Override
+    public String toString() {
+        return "GroupData{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
     }
 
     @Override
@@ -27,34 +21,39 @@ public class GroupData {
 
         GroupData groupData = (GroupData) o;
 
-        if (name != null ? !name.equals(groupData.name) : groupData.name != null) return false;
-        return id != null ? id.equals(groupData.id) : groupData.id == null;
+        return name != null ? name.equals(groupData.name) : groupData.name == null;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (id != null ? id.hashCode() : 0);
-        return result;
+        return name != null ? name.hashCode() : 0;
     }
 
-    public void setId(String id) {
+    public GroupData(String name, String header, String footer) {
+        this.name = name;
+        this.header = header;
+        this.footer = footer;
+
+        this.id = Integer.MAX_VALUE;
+    }
+
+    public GroupData(int id, String name, String header, String footer) {
+        this.name = name;
+        this.header = header;
+        this.footer = footer;
+        this.id = id;
+    }
+
+    public void setId(int id) {
 
         this.id = id;
     }
 
-    public String getId() {
+    public int getId() {
 
         return id;
     }
 
-
-    @Override
-    public String toString() {
-        return "GroupData{" +
-                "name='" + name + '\'' +
-                '}';
-    }
 
     public String getName() {
         return name;
