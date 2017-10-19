@@ -1,6 +1,7 @@
 package com.luxoft.sqa.framework;
 
 import com.luxoft.sqa.model.GroupData;
+import com.luxoft.sqa.model.Groups;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,10 +39,6 @@ public class GroupHelper extends BaseHelper{
         click(By.name("delete"));
     }
 
-    public void selectFirstGroup(int index){
-        driver.findElements(By.name("selected[]")).get(index).click();
-    }
-
     public void submitGroupModification() {
         click(By.name("update"));
     }
@@ -54,13 +51,12 @@ public class GroupHelper extends BaseHelper{
         return driver.findElements(By.name("selected[]")).size();
     }
 
-    public Set<GroupData> all() {
-        Set<GroupData> groups = new HashSet<GroupData>();
+    public Groups all() {
+        Groups groups = new Groups();
         List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
         for (WebElement element: elements) {
             String name = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            GroupData group = new GroupData().withId(id).withName(name).withHeader(null).withFooter(null);
             groups.add(new GroupData().withId(id).withName(name));
         }
         return groups;
@@ -75,14 +71,6 @@ public class GroupHelper extends BaseHelper{
         return group;
     }
 
-    public void modifyGroup(int index, GroupData group) {
-        selectFirstGroup(index);
-
-        initGroupModification();
-        fillGroupForm(group);
-        submitGroupModification();
-        returnToGroupPage();
-    }
 
     public void deleteGroup(GroupData group) {
         selectGroupById(group.getId());

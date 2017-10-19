@@ -1,6 +1,8 @@
 package com.luxoft.sqa.webtest;
 
 import com.luxoft.sqa.model.GroupData;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -23,7 +25,7 @@ public class GroupModificationTest extends TestBase {
         before.remove(modifiedGroup);
         before.add(group);
 
-        Assert.assertEquals(before, after);
+        MatcherAssert.assertThat(after, CoreMatchers.equalTo(before));
     }
 
 

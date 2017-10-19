@@ -1,6 +1,8 @@
 package com.luxoft.sqa.webtest;
 
 import com.luxoft.sqa.model.GroupData;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,7 +20,7 @@ public class GroupDeletionTest extends TestBase{
         app.getGroupHelper().deleteGroup(deletedGroup);
         Set<GroupData> after = app.getGroupHelper().all();
         before.remove(deletedGroup);
-        Assert.assertEquals(after, before);
+        MatcherAssert.assertThat(after, CoreMatchers.equalTo(before));
     }
 
 
