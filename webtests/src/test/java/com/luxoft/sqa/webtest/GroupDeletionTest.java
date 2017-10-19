@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.Set;
 
 
 public class GroupDeletionTest extends TestBase{
@@ -12,11 +13,11 @@ public class GroupDeletionTest extends TestBase{
     @Test
     public void testGroupDeletion() {
         app.getNavigationHelper().goToGroupPage();
-        List<GroupData> before = app.getGroupHelper().getGroupList();
-        int index = before.size()-1;
-        app.getGroupHelper().deleteGroup(index);
-        List<GroupData> after = app.getGroupHelper().getGroupList();
-        before.remove(before.size()-1);
+        Set<GroupData> before = app.getGroupHelper().all();
+        GroupData deletedGroup = before.iterator().next();
+        app.getGroupHelper().deleteGroup(deletedGroup);
+        Set<GroupData> after = app.getGroupHelper().all();
+        before.remove(deletedGroup);
         Assert.assertEquals(after, before);
     }
 

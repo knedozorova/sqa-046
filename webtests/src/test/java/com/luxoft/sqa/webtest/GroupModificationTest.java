@@ -15,15 +15,15 @@ public class GroupModificationTest extends TestBase {
     public void testGroupModification(){
         app.getNavigationHelper().goToGroupPage();
 
-        List<GroupData> before = app.getGroupHelper().getGroupList();
+        Set<GroupData> before = app.getGroupHelper().all();
         int index = before.size()-1;
         GroupData group = app.getGroupHelper().modifyGroup(before, index);
-        List<GroupData> after = app.getGroupHelper().getGroupList();
+        Set<GroupData> after = app.getGroupHelper().all();
         before.remove(index);
         before.add(group);
         Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);
-        before.sort(byId);
-        after.sort(byId);
+ //       before.sort(byId);
+ //       after.sort(byId);
         Assert.assertEquals(before, after);
     }
 
