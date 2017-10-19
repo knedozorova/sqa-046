@@ -14,21 +14,29 @@ public class Groups extends ForwardingSet<GroupData> {
         }
 
         @Override
-        protected Set<GroupData> delegate() {
+        protected Set<GroupData> delegate() { //обертка класса, делегирование
             return delegate;
         }
 
-        public Groups(Groups groups){
-            this.delegate = new HashSet<>(groups.delegate);
+        public Groups(Groups groups){//сам конструктор
+            this.delegate = new HashSet<>(groups.delegate);//новый множество для delegate
         }
 
 
 
         public Groups withAdded(GroupData group){
-            Groups groups = new Groups(this);
+            Groups groups = new Groups(this);  //создание копии объекта, новый конструктор со ссылкой на себя
             groups.add(group);
             return groups;
 
 
         }
+
+        public Groups without(GroupData group){
+            Groups groups = new Groups(this);  //создание копии объекта, новый конструктор со ссылкой на себя
+            groups.remove(group);
+            return groups;
+
+
+    }
 }
