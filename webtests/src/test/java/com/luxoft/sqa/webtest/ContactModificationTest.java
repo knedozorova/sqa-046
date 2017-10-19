@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class ContactModificationTest extends TestBase {
 
-    @Test
+    @Test(enabled = false)
     public void TestContactModification(){
         app.getNavigationHelper().goToHomePage();
         if (!app.getContactHelper().isThereAContact()){

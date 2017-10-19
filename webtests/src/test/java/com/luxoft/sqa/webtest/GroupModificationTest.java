@@ -14,22 +14,19 @@ public class GroupModificationTest extends TestBase {
     @Test
     public void testGroupModification(){
         app.getNavigationHelper().goToGroupPage();
-        int index = app.getGroupHelper().getGroupCount();
-        List<GroupData> before = app.getGroupHelper().getGroupList();
-        app.getGroupHelper().selectFirstGroup(index-1);
 
-        app.getGroupHelper().initGroupModification();
-        GroupData group = new GroupData(before.get(index-1).getId(),"test1", "test1", "test1");
-        app.getGroupHelper().fillGroupForm(group);
-        app.getGroupHelper().submitGroupModification();
-        app.getGroupHelper().returnToGroupPage();
+        List<GroupData> before = app.getGroupHelper().getGroupList();
+        int index = before.size()-1;
+        GroupData group = app.getGroupHelper().modifyGroup(before, index);
         List<GroupData> after = app.getGroupHelper().getGroupList();
-        before.remove(index-1);
+        before.remove(index);
         before.add(group);
-        Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+        Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);
         before.sort(byId);
         after.sort(byId);
         Assert.assertEquals(before, after);
     }
+
+
 
 }

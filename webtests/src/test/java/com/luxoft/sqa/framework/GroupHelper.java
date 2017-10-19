@@ -58,9 +58,35 @@ public class GroupHelper extends BaseHelper{
         for (WebElement element: elements) {
             String name = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            GroupData group = new GroupData(id, name, null, null);
+            GroupData group = new GroupData().withId(id).withName(name).withHeader(null).withFooter(null);
             groups.add(group);
         }
         return groups;
+    }
+
+    public GroupData createGroup() {
+        initGroupCreation();
+        GroupData group = new GroupData().withName("test1").withHeader(null).withFooter("test4");
+        fillGroupForm(group);
+        submitGroupCreation();
+        returnToGroupPage();
+        return group;
+    }
+
+    public GroupData modifyGroup(List<GroupData> before, int index) {
+        selectFirstGroup(index);
+
+        initGroupModification();
+        GroupData group = new GroupData().withId(before.get(index).getId()).withName("test1").withHeader("test1").withFooter("test1");
+        fillGroupForm(group);
+        submitGroupModification();
+        returnToGroupPage();
+        return group;
+    }
+
+    public void deleteGroup(int index) {
+        selectFirstGroup(index);
+        deleteGroup();
+        returnToGroupPage();
     }
 }

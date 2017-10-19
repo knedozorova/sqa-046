@@ -3,8 +3,12 @@ package com.luxoft.sqa.framework;
 import com.luxoft.sqa.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends BaseHelper {
 
@@ -61,5 +65,17 @@ public class ContactHelper extends BaseHelper {
     public void contactModification() {
         fillNewContact(new ContactData("Test7", "Test7", "Test3", "Test4", "Test9", false ));
         submitContactModification();
+    }
+
+ //   public List<ContactData> getContactList() {
+ //       List<ContactData> groups = new ArrayList<ContactData>();
+//        List<WebElement> elements = driver.findElements(By.cssSelector("tr.entry"));
+//        for (WebElement element: elements) {
+//            String fname = element.getText();
+//            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+//            GroupData group = new GroupData(id, name, null, null);
+//            groups.add(group);
+//        }
+//        return groups;
     }
 }

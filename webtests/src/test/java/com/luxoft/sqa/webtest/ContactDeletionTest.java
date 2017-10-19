@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class ContactDeletionTest extends TestBase {
 
 
-    @Test
+    @Test(enabled = false)
         public void testContactDeletion() {
             app.getNavigationHelper().goToHomePage();
             if (!app.getContactHelper().isThereAContact()){
