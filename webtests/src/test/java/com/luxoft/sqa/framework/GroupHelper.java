@@ -61,7 +61,7 @@ public class GroupHelper extends BaseHelper{
             String name = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             GroupData group = new GroupData().withId(id).withName(name).withHeader(null).withFooter(null);
-            groups.add(group);
+            groups.add(new GroupData().withId(id).withName(name));
         }
         return groups;
     }
@@ -75,15 +75,13 @@ public class GroupHelper extends BaseHelper{
         return group;
     }
 
-    public GroupData modifyGroup(List<GroupData> before, int index) {
+    public void modifyGroup(int index, GroupData group) {
         selectFirstGroup(index);
 
         initGroupModification();
-        GroupData group = new GroupData().withId(before.get(index).getId()).withName("test1").withHeader("test1").withFooter("test1");
         fillGroupForm(group);
         submitGroupModification();
         returnToGroupPage();
-        return group;
     }
 
     public void deleteGroup(GroupData group) {
@@ -95,5 +93,15 @@ public class GroupHelper extends BaseHelper{
     private void selectGroupById(int id) {
         click(By.cssSelector("input[value='" + id + "']"));
     }
+
+    public void modifyGroup(GroupData group) {
+        selectGroupById(group.getId());
+
+        initGroupModification();
+        fillGroupForm(group);
+        submitGroupModification();
+        returnToGroupPage();
+    }
+
 
 }

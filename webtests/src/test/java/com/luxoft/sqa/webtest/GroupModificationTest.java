@@ -16,14 +16,13 @@ public class GroupModificationTest extends TestBase {
         app.getNavigationHelper().goToGroupPage();
 
         Set<GroupData> before = app.getGroupHelper().all();
-        int index = before.size()-1;
-        GroupData group = app.getGroupHelper().modifyGroup(before, index);
+        GroupData modifiedGroup = before.iterator().next();
+        GroupData group = new GroupData().withId(modifiedGroup.getId()).withName("test1").withHeader("test1").withFooter("test1");
+        app.getGroupHelper().modifyGroup(group);
         Set<GroupData> after = app.getGroupHelper().all();
-        before.remove(index);
+        before.remove(modifiedGroup);
         before.add(group);
-        Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);
- //       before.sort(byId);
- //       after.sort(byId);
+
         Assert.assertEquals(before, after);
     }
 
